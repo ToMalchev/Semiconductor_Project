@@ -1,0 +1,54 @@
+{% extends "information/index.html" %}
+
+
+
+{% block content %}
+        {% load staticfiles %}
+
+ <div class="container">
+
+        
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">
+                        <strong>Semiconductor Lab - Lakehead University</strong>
+                    </h2>
+                    <hr>
+                    <img class="img-responsive img-border img-center" style="max-width: 70%" src="{% static 'information/img/lab.jpg' %}" alt=""/>
+                    <hr class="visible-xs">
+                    <br/>
+                    <br/>
+                    <br>
+                    <p style="margin-left: 5%"> {{ block1 }} </p>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">
+                        <strong>Semiconductor Lab - Lakehead University</strong>
+                    </h2>
+                    <hr>
+                    <img class="img-responsive img-border img-center" style="max-width: 70%" src="{% static 'information/img/lab.jpg' %}" alt=""/>
+                    <br/>
+                    <br/>
+                    <p style="margin-left: 5%"> {{ block2 }} </p>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+
+   
+
+{% endblock %}

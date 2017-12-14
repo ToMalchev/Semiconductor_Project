@@ -1,0 +1,267 @@
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{% block title %}{% endblock %}</title>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Semiconductor</title>
+        {% load staticfiles %}
+    <!-- Bootstrap Core CSS -->
+   
+    <link rel="stylesheet" href="{% static 'information/css/bootstrap.min.css' %}" type = "text/css"/>
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'information/css/business-casual.css' %}" type = "text/css"/>
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+   
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+ 
+  <!-- Script to disable right click -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $(document).on("contextmenu",function(e){
+        if(e.target.nodeName != "INPUT" && e.target.nodeName != "TEXTAREA")
+             e.preventDefault();
+     });
+ });
+    </script>
+
+
+<!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
+{% block extrastyle %}{% endblock %}
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+{% block extrahead %}{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+
+<style type="text/css">
+	
+	.submit-row a.deletelink{
+		clear: both;
+		height: auto;
+	}
+	h1 {
+
+		margin-left: 5%;
+	}
+	#content {
+		width: 90%;
+		border: 1px solid black;
+		margin-left: 5%;
+		padding: 3%;
+		overflow: hidden;
+
+	}
+	#content-main {
+		padding: 4%;
+		margin-left: 5%;
+		float: left;
+		border: 1px solid black;
+		display: inline-block;
+		
+	}
+	#recent-actions-module {
+		margin-left: 10%;
+		border: 1px solid black;
+		float: left;
+		padding: 3%;
+		
+	}
+	a {
+		margin: 10px;
+	}
+	caption {
+		margin-left: 30%;
+		
+	}
+	.app-auth > table:nth-child(1) > caption:nth-child(1) {
+		margin-top: 0%;
+	}
+	.app-auth{
+		border: solid 1px;
+		padding: 5%;
+		margin-top: 13%;
+		margin-bottom: 5%;
+
+	}
+	.app-contact {
+		border: solid 1px;
+		padding: 5%;
+		margin-top: 13%;
+		margin-bottom: 5%;
+	}
+	.app-main_information {
+		border: solid 1px;
+		padding: 5%;
+		margin-top: 13%;
+		margin-bottom: 5%;
+	}
+	.app-uploading_data {
+		border: solid 1px;
+		padding: 5%;
+		margin-top: 13%;
+		margin-bottom: 5%;
+	}
+
+</style>
+
+
+
+</head>
+
+
+{% load i18n %}
+
+<body background="{% static 'information/img/lab.jpg' %}" class="body"
+  data-admin-utc-offset="{% now "Z" %}">
+
+
+<!-- <body background="{% static 'information/img/lab.jpg' %}" class='body'> -->
+	
+
+    <div class="brand">Semiconductor Lab</div>
+    <div class="address-bar">Lakehead University - Thunder Bay</div>
+    
+     <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> 
+                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                <a class="navbar-brand">Semiconductor Lab</a>           
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a data-toggle="collapse" data-target=".in" href="/">Home</a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-target=".in" href="/viewCharts/">Data</a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-target=".in" href="/analizeData/">Analize Data</a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-target=".in" href="/contact/">Contact</a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-target=".in" href="/admin/">Admin</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+        {% block content_body %}
+        	<div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center"> 
+                        <strong>Site Administration</strong>
+                    </h2>
+                    <hr>
+                </div>
+                {% block usertools %}
+				{% if has_permission %}
+	        		<div style="text-align: right; font-size: 1.6em; margin: 5%; color: white;"">
+	        		{% if user.has_usable_password %}
+	                        <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+	                        <br>
+	                        <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a>
+	                {% endif %}       
+	        		</div>
+	        	{% endif %}
+	        	{% endblock %}	
+             {% block breadcrumbs %}
+             
+			    <div style="border: 5px solid red; margin-left: 100px;>
+			    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+			    {% if title %} &rsaquo; {{ title }}{% endif %}
+			    </div>
+			   
+			    {% endblock %}
+
+			   {% block messages %}
+			        {% if messages %}
+			        <ul class="messagelist">{% for message in messages %}
+			          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+			        {% endfor %}</ul>
+			        {% endif %}
+			    {% endblock messages %}
+
+			    <!-- Content -->
+			    <div id="content" class="{% block coltype %}colM{% endblock %}">
+			        {% block pretitle %}{% endblock %}
+			        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+
+			        {% block content %}
+
+			        {% block object-tools %}{% endblock %}
+			        {{ content }}
+			        {% endblock %}
+			        {% block sidebar %}{% endblock %}
+			        <br class="clear" />
+			    </div>
+			<!-- END Content -->
+			</div>
+			</div>
+        {% endblock %}
+
+ <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Lakehead University - Semiconductor Lab</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
