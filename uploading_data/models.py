@@ -92,23 +92,24 @@ class xml_intensities(models.Model):
 #Creating xml_intensities objects and xml_2Theta
 @receiver(post_save, sender=upload)  
 def extracting_data_from_xml(sender,instance, **kwargs):
-    
-    if kwargs.get('created', True):        
+    try:
+        if kwargs.get('created', True):        
         
-        tree = ET.parse(instance.xml_files)
-        root = tree.getroot()
-        xrdMeasurement = root.find('{http://www.xrdml.com/XRDMeasurement/1.3}xrdMeasurement')
-        scan = xrdMeasurement.find('{http://www.xrdml.com/XRDMeasurement/1.3}scan')
-        dataPoints = scan.find('{http://www.xrdml.com/XRDMeasurement/1.3}dataPoints')
+            tree = ET.parse(instance.xml_files)
+            root = tree.getroot()
+            xrdMeasurement = root.find('{http://www.xrdml.com/XRDMeasurement/1.3}xrdMeasurement')
+            scan = xrdMeasurement.find('{http://www.xrdml.com/XRDMeasurement/1.3}scan')
+            dataPoints = scan.find('{http://www.xrdml.com/XRDMeasurement/1.3}dataPoints')
     
-        intensities_child = dataPoints.find('{http://www.xrdml.com/XRDMeasurement/1.3}intensities').text
+            intensities_child = dataPoints.find('{http://www.xrdml.com/XRDMeasurement/1.3}intensities').text
+                   
+            positions = dataPoints.find('{http://www.xrdml.com/XRDMeasurement/1.3}positions')        
             
-        positions = dataPoints.find('{http://www.xrdml.com/XRDMeasurement/1.3}positions')        
-            
-        theta_start_position = float(positions.find('{http://www.xrdml.com/XRDMeasurement/1.3}startPosition').text)
-        theta_end_position = float(positions.find('{http://www.xrdml.com/XRDMeasurement/1.3}endPosition').text)
-        xml_intensities.objects.get_or_create(upload_xml_id=instance.id, intensities = intensities_child, startPosition=theta_start_position, endPosition=theta_end_position)
-   
+            theta_start_position = float(positions.find('{http://www.xrdml.com/XRDMeasurement/1.3}startPosition').text)
+            theta_end_position = float(positions.find('{http://www.xrdml.com/XRDMeasurement/1.3}endPosition').text)
+            xml_intensities.objects.get_or_create(upload_xml_id=instance.id, intensities = intensities_child, startPosition=theta_start_position, endPosition=theta_end_position)
+   except Exception as e:
+       pass
         
         
         
